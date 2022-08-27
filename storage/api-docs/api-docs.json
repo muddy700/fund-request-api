@@ -1,0 +1,29 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Fund Request API",
+        "description": "RESTful API Endpoints for iPF-OS (Fund Request Module) ",
+        "contact": {
+            "email": "mohamedmfaume700@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/",
+            "description": "Development API Server"
+        }
+    ],
+    "paths": {
+        "/api/users": {
+            "get": {
+                "operationId": "e73e50dccf71ce752aa3e7d9021d1eb0",
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            }
+        }
+    }
+}
