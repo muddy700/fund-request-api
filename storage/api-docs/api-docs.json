@@ -1,0 +1,205 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Fund Request API",
+        "description": "RESTful API Endpoints for iPF-OS (Fund Request Module) ",
+        "contact": {
+            "email": "mohamedmfaume700@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/",
+            "description": "Development Server"
+        },
+        {
+            "url": "https://fund-request-staging-api.herokuapp.com/api/v1",
+            "description": "Staging Server"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "Default",
+            "description": "Testing Endpoint"
+        },
+        {
+            "name": "Auth",
+            "description": "REST API-Endpoints For Authentication"
+        },
+        {
+            "name": "Access-Control",
+            "description": "REST API-Endpoints For Managing Access"
+        },
+        {
+            "name": "Users",
+            "description": "REST API-Endpoints For Users"
+        }
+    ],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/api/users": {
+            "post": {
+                "operationId": "e73e50dccf71ce752aa3e7d9021d1eb0",
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            },
+            "get": {
+                "operationId": "e73e50dccf71ce752aa3e7d9021d1eb0",
+                "responses": {
+                    "200": {
+                        "description": "An example endpoint"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LoginInfo": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "example": "jdoe@gmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "12345678"
+                }
+            }
+        },
+        "ChangePasswordInfo": {
+            "type": "object",
+            "properties": {
+                "oldPassword": {
+                    "type": "string",
+                    "required": true,
+                    "example": "12345678"
+                },
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "jdoe@12345"
+                }
+            }
+        },
+        "ForgotPasswordInfo": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "required": true,
+                    "example": "jdoe@gmail.com"
+                },
+                "userType": {
+                    "type": "string",
+                    "required": true,
+                    "example": "user"
+                }
+            }
+        },
+        "ResetPasswordInfo": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "required": true,
+                    "example": "jdoe@ipf#12345"
+                }
+            }
+        },
+        "UpdatePermissions": {
+            "type": "object",
+            "properties": {
+                "permissions": {
+                    "type": "object",
+                    "properties": {
+                        "added": { "type": "array", "items": {} },
+                        "removed": { "type": "array", "items": {} }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "Role": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Admin"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Super user used to onboard others"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "firstName": {
+                        "type": "string",
+                        "required": true,
+                        "example": "John"
+                    },
+                    "middleName": { "type": "string", "example": "M" },
+                    "lastName": {
+                        "type": "string",
+                        "required": true,
+                        "example": "Doe"
+                    },
+                    "email": {
+                        "type": "string",
+                        "required": true,
+                        "example": "jd@gmail.com"
+                    },
+                    "phoneNumber": {
+                        "type": "string",
+                        "required": true,
+                        "example": "255789101112"
+                    },
+                    "gender": { "type": "string", "example": "M | F" },
+                    "password": {
+                        "type": "string",
+                        "required": true,
+                        "example": "password",
+                        "format": "password"
+                    },
+                    "type": { "type": "string", "example": "user" },
+                    "lastLocation": { "type": "string", "example": "magomeni" },
+                    "status": { "type": "number", "example": 1 },
+                    "firstTimeLoginFlag": {
+                        "type": "number",
+                        "example": "1 | 0"
+                    },
+                    "role": { "type": "string", "example": "role-id" },
+                    "token": {
+                        "type": "string",
+                        "example": "some random strings handled in backend"
+                    }
+                }
+            }
+        }
+    }
+}
