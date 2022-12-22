@@ -44,10 +44,16 @@ This is the RESTful API repository for the
 - Create a database
 
  ```sh
- DB_DATABASE=fund_request
- DB_USERNAME=root
- DB_PASSWORD=Password
+ DB_DATABASE=<Your Database Name>
+ DB_USERNAME=<DB Username>
+ DB_PASSWORD=<DB Password>
  ```
+
+- Update dependencies
+
+```sh
+ composer update
+```
 
 - Generate Key
 
