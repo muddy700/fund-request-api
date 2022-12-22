@@ -14,11 +14,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // Get current environment.
+        $environment = env('APP_ENV');
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Check if environment is local or testing.
+        $allowed_environments = ['local', 'test', 'dev', 'develop', 'development'];
+        $isLocal = in_array($environment, $allowed_environments);
+
+        // Seed data for all environments.
+        $this->call([
+            PermissionSeeder::class,
+            // eg.. AdminSeeder::class
+        ]);
+
+        // Seed data only for local or testing environment.
+        if ($isLocal) {
+            // $this->call([]);
+        }
     }
 }
