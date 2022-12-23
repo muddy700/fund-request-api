@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         // Seed data for all environments.
         $this->call([
             PermissionSeeder::class,
-            // eg.. AdminSeeder::class
+            RoleSeeder::class
         ]);
 
         // Seed data only for local or testing environment.
