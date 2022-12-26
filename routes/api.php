@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\RolePermissionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,8 @@ Route::prefix('v1')->group(function () {
 
     // Routes for Roles
     Route::apiResource('roles', RoleController::class);
+
+    // Routes for Role-Permissions
+    Route::apiResource('role-permissions', RolePermissionController::class)->only(['store', 'destroy']);
+    Route::put('manage-role-permissions/{role_id}', [RolePermissionController::class, 'manage']);
 });
