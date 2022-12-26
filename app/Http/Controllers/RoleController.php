@@ -5,15 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreRoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // Get all Roles from the database
     public function index()
     {
         try {
@@ -25,12 +20,7 @@ class RoleController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // Create a new role
     public function store(StoreRoleRequest $request)
     {
         try {
@@ -47,12 +37,7 @@ class RoleController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+    // Get the role with a given id
     public function show($id)
     {
         try {
@@ -70,13 +55,7 @@ class RoleController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+    // Update the role with a given id
     public function update(Request $request, $id)
     {
         try {
@@ -106,12 +85,7 @@ class RoleController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
+    // Delete the role with a given id
     public function destroy($id)
     {
         try {
@@ -130,6 +104,7 @@ class RoleController extends Controller
         }
     }
 
+    // Send successful response
     public function sendError($action, $error, $status = 500, $hasMany = 0)
     {
         $message = 'Failed to ' . $action . ($hasMany ? ' roles.' : ' role.');
@@ -139,6 +114,7 @@ class RoleController extends Controller
         return response()->json($content, $status);
     }
 
+    // Send error response
     public function sendSuccess($action, $data, $hasMany = 0)
     {
         $message = ($hasMany ? 'Roles ' : 'Role ') . $action . ' successfully.';
