@@ -33,9 +33,24 @@ class Role extends Model
         'created_by',
     ];
 
+    // The relationships that should always be loaded.
+    protected $with = ['rolePermissions.permission:id,resource,name,description'];
+
     // Get details of a user who created this role.
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    // Get permissions linked with this role.
+    public function rolePermissions()
+    {
+        return $this->hasMany(RolePermission::class);
+    }
+
+    // Get users linked with this role.
+    public function users()
+    {
+        return $this->hasMany(User::class);
     }
 }
