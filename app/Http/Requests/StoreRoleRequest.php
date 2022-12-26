@@ -26,7 +26,7 @@ class StoreRoleRequest extends FormRequest
     //  Get the validation rules that apply to the request.
     public function rules()
     {
-        return ['name' => 'required|unique:roles,name'];
+        return ['name' => 'required|string|min:4|unique:roles,name'];
     }
 
     // Customizing the error messages.
@@ -34,7 +34,8 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name.required' => 'The role name field is required.',
-            'name.unique' => 'The role name has already been taken.'
+            'name.unique' => 'The role name has already been taken.',
+            'name.min' => 'The role name must contain at least four (4) characters.'
         ];
     }
 

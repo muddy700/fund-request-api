@@ -30,12 +30,10 @@ class Role extends Model
         'name',
         'description',
         'status',
-        'creayted_by',
+        'created_by',
     ];
 
-    /**
-     * Get details of a user who created this role.
-     */
+    // Get details of a user who created this role.
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
